@@ -3,12 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/buscar"
+        android:id="@+id/menuBuscar"
         android:icon="@android:drawable/ic_menu_search"
         android:title="buscar"
         app:showAsAction="ifRoom|collapseActionView" />
     <item
-        android:id="@+id/adicionar"
         android:icon="@android:drawable/ic_input_add"
         android:title="adicionar"
         app:showAsAction="ifRoom" />

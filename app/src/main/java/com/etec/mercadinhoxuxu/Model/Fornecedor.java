@@ -10,22 +10,42 @@ Telefone 2
 Endereço
 */
 
+
+
+  //construtor
+  public Fornecedor(int id, String cnpj, String nome_fantasia, String razao_social, String telefone_1, String telefone_2, String endereco) {
+    this.id = id;
+    this.cnpj = cnpj;
+    this.nome_fantasia = nome_fantasia;
+    this.razao_social = razao_social;
+    this.telefone_1 = telefone_1;
+    this.telefone_2 = telefone_2;
+    this.endereco = endereco;
+  }
+
+  public Fornecedor() {
+  }
+
+  private int id;
   private String cnpj;
   private String nome_fantasia;
   private String razao_social;
   private String telefone_1;
   private String telefone_2;
   private String endereco;
-  //construtor
 
-  public Fornecedor(String cnpj, String razao_social, String telefone_1, String endereco) {
-    this.cnpj = cnpj;
-    this.razao_social = razao_social;
-    this.telefone_1 = telefone_1;
-    this.endereco = endereco;
-  }
+
+
 
   //getter e setter
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
 
   public String getCnpj() {
     return cnpj;

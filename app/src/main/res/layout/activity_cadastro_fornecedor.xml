@@ -124,5 +124,11 @@
             android:text="Cadastrar"
             android:textSize="24sp" />
 
+        <Button
+            android:id="@+id/btnFornecedoresCadastrados"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fornecedores Cadastrados" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

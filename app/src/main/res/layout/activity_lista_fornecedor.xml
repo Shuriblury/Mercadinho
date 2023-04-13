@@ -7,6 +7,7 @@
     tools:context=".lista_fornecedor">
 
     <ListView
+        android:id="@+id/listFornecedor"
         android:layout_width="409dp"
         android:layout_height="729dp"
         android:layout_marginStart="1dp"
