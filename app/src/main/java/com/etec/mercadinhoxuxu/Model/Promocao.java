@@ -4,13 +4,15 @@ public class Promocao {
     /*data de início
 código do produto
 limite por compr*/
+    private int id;
     private String data_inicio;
     private String codigo;
     private int periodo_em_dias;
     private int limite;
 
     //construtor
-    public Promocao(String data_inicio, String codigo) {
+    public Promocao() {
+        this.id = id;
         this.data_inicio = data_inicio;
         this.codigo = codigo;
         this.periodo_em_dias = -1;
@@ -18,6 +20,14 @@ limite por compr*/
     }
     //getter e setter
 
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getData_inicio() {
         return data_inicio;

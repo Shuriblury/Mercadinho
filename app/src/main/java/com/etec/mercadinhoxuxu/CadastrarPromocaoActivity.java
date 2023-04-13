@@ -54,8 +54,8 @@ public class CadastrarPromocaoActivity extends AppCompatActivity {
                 /*quando o botão for acionado, cria-se o obj, com as
                 * informações alimentadas em tela*/
                 Promocao promocao = new Promocao
-                        (data_inicio.getText().toString(),
-                        codigo_produto.getText().toString());
+                        (
+                        );
                 promocao.setLimite
                         (Integer.parseInt(limite_compra.getText().toString()));
                 promocao.setPeriodo_em_dias
