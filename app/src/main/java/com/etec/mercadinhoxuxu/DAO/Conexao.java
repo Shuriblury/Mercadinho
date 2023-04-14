@@ -53,7 +53,15 @@ limite por compr*/
             "data_inicio varchar(10)," +
             "limite_compra int)");
 
+        sqLiteDatabase.execSQL("create table produto(" +
+                "codigo primary key," +
+                "nome varchar(20)," +
+                "descricao''(20)," +
+                "categoria varchar(20))");
+
     }
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
