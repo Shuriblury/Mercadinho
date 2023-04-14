@@ -6,18 +6,31 @@ public class Produto {
     descrição
     categoria: bebida, bebida alcoólica, grão, laticínios, fruta, leguminosa... etc*/
     // 1º passo -> criar variaveis
+    private int id;
     private String codigo;
     private String nome;
     private String descricao;
     private String categoria;
 
     //2º criar construtores
-    public Produto(String codigo, String nome) {
+    public Produto() {
+        this.id = id;
         this.codigo = codigo;
         this.nome = nome;
+        this.descricao = descricao;
+        this.categoria = categoria;
     }
 
     //3º getter e setter
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getCodigo() {
         return codigo;
     }

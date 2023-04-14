@@ -66,4 +66,6 @@ private List<Promocao> listaPromocaoFiltro;
     }
 
 
+    public void addPromocao(Promocao promocao, View view) {
+    }
 }
