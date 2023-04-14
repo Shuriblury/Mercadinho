@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -86,6 +87,7 @@ public class CadastroFornecedorActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+
 
 
         }

@@ -42,7 +42,7 @@ public class ListaFornecedorActivity extends AppCompatActivity {
         fornecedorController.setFornecedorDAO(fornecedorDAO);
 
         //ensinando a lista da tela como deve ser mostrado cada item
-        ArrayAdapter<Fornecedor> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, fornecedorController.getListaFornecedorsFiltro(false));
+        ArrayAdapter<Fornecedor> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, fornecedorController.getListaFornecedoresFiltro(false));
         listFornecedor.setAdapter(adapter);
 
         //contexto da lista de itens
@@ -79,9 +79,9 @@ public class ListaFornecedorActivity extends AppCompatActivity {
 
 
     //para tela de cadastro
-    public  void menuAdicionar (MenuItem menuItem){
-        Intent intent = new Intent(ListaFornecedorActivity.this, CadastroFornecedorActivity.class);
-        startActivity(intent);
+   public  void menuAdicionar (MenuItem menuItem){
+    Intent intent = new Intent(ListaFornecedorActivity.this, CadastroFornecedorActivity.class);
+       startActivity(intent);
     }
 
     //para verificar o estado de ativo novamente da tela
@@ -89,8 +89,8 @@ public class ListaFornecedorActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-        fornecedorController.getListaFornecedorsFiltro(true).clear();
-        fornecedorController.getListaFornecedorsFiltro(true);
+        fornecedorController.getListaFornecedoresFiltro(true).clear();
+        fornecedorController.getListaFornecedoresFiltro(true);
         listFornecedor.invalidateViews();
 
     }
@@ -103,14 +103,14 @@ public class ListaFornecedorActivity extends AppCompatActivity {
     }
 
     //para ensinar o botão excluir do menu de contexto
-    public void excluir(MenuItem menuItem){
+    public void excluir (MenuItem menuItem){
         //pegar a posição clicada
         AdapterView.AdapterContextMenuInfo menuInfo =
                 (AdapterView.AdapterContextMenuInfo)
                         menuItem.getMenuInfo();
         final Fornecedor fornecedorParaApagar =
                 fornecedorController
-                        .getListaFornecedorsFiltro(false)
+                        .getListaFornecedoresFiltro(false)
                         .get(menuInfo.position);
         //dialogo com confirmação
         AlertDialog dialog = new AlertDialog

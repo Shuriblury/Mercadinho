@@ -45,7 +45,7 @@ public class FornecedorDAO {
         //Cursor é = a um ponteiro que "aponta" para a tabela
         //que eu desejo consultar
         Cursor cursor = banco.query("fornecedor",
-                new String[]{"id", "cnpj", "nome_fantasia", "razao_social", "telefone1", "telefone2", "endereco"},
+                new String[]{"cnpj", "nome_fantasia", "razao_social", "telefone1", "telefone2", "endereco"},
                 null, null, null,
                 null,null, null);
 
@@ -53,13 +53,13 @@ public class FornecedorDAO {
         //por ele para saber onde começam e terminam os dados(row/linhas)
         while(cursor.moveToNext()){
             Fornecedor fornecedorAtual = new Fornecedor();
-            fornecedorAtual.setId(cursor.getInt(0));
-            fornecedorAtual.setCnpj(cursor.getString(1));
-            fornecedorAtual.setNome_fantasia(cursor.getString(2));
-            fornecedorAtual.setRazao_social(cursor.getString(3));
-            fornecedorAtual.setTelefone_1(cursor.getString(4));
-            fornecedorAtual.setTelefone_2(cursor.getString(5));
-            fornecedorAtual.setEndereco(cursor.getString(6));
+
+            fornecedorAtual.setCnpj(cursor.getString(0));
+            fornecedorAtual.setNome_fantasia(cursor.getString(1));
+            fornecedorAtual.setRazao_social(cursor.getString(2));
+            fornecedorAtual.setTelefone_1(cursor.getString(3));
+            fornecedorAtual.setTelefone_2(cursor.getString(4));
+            fornecedorAtual.setEndereco(cursor.getString(5));
 
             fornecedoresEncontrados.add(fornecedorAtual);
         }
@@ -68,8 +68,8 @@ public class FornecedorDAO {
 
     //função responsavel por agapgar item do BD
     public void  excluirFornecedor(Fornecedor fornecedor){
-        banco.delete("fornecedor", "id = ?"
-                ,new String[]{String.valueOf(fornecedor.getId())});
+        banco.delete("fornecedor", "cnpj = ?"
+                ,new String[]{String.valueOf(fornecedor.getCnpj())});
     }
 
 

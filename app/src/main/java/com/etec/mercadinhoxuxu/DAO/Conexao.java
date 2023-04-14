@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 //baixo volume de dados.
 public class Conexao extends SQLiteOpenHelper {
     //constante que representa o nome da base de dados;
-    private static String NOMEDOBANCO = "supermercado.db";
+    private static String NOMEDOBANCO = "mercado.db";
     //constante que representa a versão do banco
     private static int VERSION = 1;
 
@@ -23,7 +23,7 @@ public class Conexao extends SQLiteOpenHelper {
       //create table nome_tabela(atrib);
      //tabela produto
         sqLiteDatabase.execSQL(
-             "create table produto(codigo primary key," +
+             "create table fornecedor(cnpj primary key," +
                      "nome varchar(50)," +
                      "descricao varchar(100)," +
                      "categoria varchar(50))"

@@ -6,9 +6,12 @@
         android:id="@+id/menuBuscar"
         android:icon="@android:drawable/ic_menu_search"
         android:title="buscar"
+        app:actionViewClass="android.widget.SearchView"
         app:showAsAction="ifRoom|collapseActionView" />
     <item
+        android:id="@+id/menuAdicionar"
         android:icon="@android:drawable/ic_input_add"
         android:title="adicionar"
+        android:onClick="menuAdicionar"
         app:showAsAction="ifRoom" />
 </menu>

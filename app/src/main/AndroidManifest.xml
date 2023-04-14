@@ -14,7 +14,7 @@
         android:theme="@style/Theme.MercadinhoXuxu"
         tools:targetApi="31">
         <activity
-            android:name=".lista_fornecedor"
+            android:name=".ListaFornecedorActivity"
             android:exported="false" />
         <activity
             android:name=".CadastrarPromocaoActivity"

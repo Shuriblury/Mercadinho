@@ -12,8 +12,8 @@ import java.util.List;
 public class FornecedorController {
     //link para utilizar o que o DAO provê
     private FornecedorDAO fornecedorDAO;
-    private List<Fornecedor> listaFornecedors;
-    private List<Fornecedor> listaFornecedorsFiltro;
+    private List<Fornecedor> listaFornecedores;
+    private List<Fornecedor> listaFornecedoresFiltro;
 
     public FornecedorDAO getFornecedorDAO() {
         return fornecedorDAO;
@@ -32,41 +32,41 @@ public class FornecedorController {
                 Toast.LENGTH_SHORT).show();
     }
 
-    public List<Fornecedor> getListaFornecedors() {
-        if(this.listaFornecedors == null ){
-            this.listaFornecedors = new ArrayList<>();
+    public List<Fornecedor> getListaFornecedores() {
+        if(this.listaFornecedores == null ){
+            this.listaFornecedores = new ArrayList<>();
         }
-        if(this.listaFornecedors.isEmpty()){
-            this.listaFornecedors = fornecedorDAO.listaFornecedoresCadastrados();
+        if(this.listaFornecedores.isEmpty()){
+            this.listaFornecedores = fornecedorDAO.listaFornecedoresCadastrados();
         }
-        return listaFornecedors;
+        return listaFornecedores;
     }
 
-    public void setListaFornecedors(List<Fornecedor> listaFornecedors) {
-        this.listaFornecedors = listaFornecedors;
+    public void setListaFornecedores(List<Fornecedor> listaFornecedores) {
+        this.listaFornecedores = listaFornecedores;
     }
 
-    public List<Fornecedor> getListaFornecedorsFiltro(boolean voltou) {
-        if(this.listaFornecedorsFiltro == null ){
-            this.listaFornecedorsFiltro = this.getListaFornecedors();
+    public List<Fornecedor> getListaFornecedoresFiltro(boolean voltou) {
+        if(this.listaFornecedoresFiltro == null ){
+            this.listaFornecedoresFiltro = this.getListaFornecedores();
         }
         if(voltou ){
-            this.listaFornecedorsFiltro.addAll(this.fornecedorDAO.listaFornecedoresCadastrados());
+            this.listaFornecedoresFiltro.addAll(this.fornecedorDAO.listaFornecedoresCadastrados());
         }
-        return listaFornecedorsFiltro;
+        return listaFornecedoresFiltro;
     }
 
-    public void setListaFornecedorsFiltro(List<Fornecedor> listaFornecedorsFiltro) {
-        this.listaFornecedorsFiltro = listaFornecedorsFiltro;
+    public void setListaFornecedoresFiltro(List<Fornecedor> listaFornecedoresFiltro) {
+        this.listaFornecedoresFiltro = listaFornecedoresFiltro;
     }
 
     //filtro para busca na lista
     public void procuraFornecedorFiltro(String filtro){
-        this.getListaFornecedorsFiltro(true).clear();
-        for(Fornecedor fornecedor : this.getListaFornecedors()){
+        this.getListaFornecedoresFiltro(true).clear();
+        for(Fornecedor fornecedor : this.getListaFornecedores()){
             if(fornecedor.getCnpj().toLowerCase()
                     .contains(filtro.toLowerCase())){
-                this.getListaFornecedorsFiltro(false).add(fornecedor);
+                this.getListaFornecedoresFiltro(false).add(fornecedor);
             }
         }
 
@@ -78,7 +78,7 @@ public class FornecedorController {
     }
 
     public void removerFornecedorDasListas(Fornecedor fornecedorParaApagar) {
-        this.listaFornecedors.remove(fornecedorParaApagar);
-        this.listaFornecedorsFiltro.remove(fornecedorParaApagar);
+        this.listaFornecedores.remove(fornecedorParaApagar);
+        this.listaFornecedoresFiltro.remove(fornecedorParaApagar);
     }
 }
