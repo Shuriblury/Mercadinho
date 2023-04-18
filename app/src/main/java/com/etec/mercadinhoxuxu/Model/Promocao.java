@@ -10,7 +10,7 @@ limite por compr*/
     private int limite;
 
     //construtor
-    public Promocao(String data_inicio, String codigo) {
+    public Promocao() {
         this.data_inicio = data_inicio;
         this.codigo = codigo;
         this.periodo_em_dias = -1;
@@ -19,7 +19,7 @@ limite por compr*/
     //getter e setter
 
 
-    public String getData_inicio() {
+    public String getData_inicio(String s) {
         return data_inicio;
     }
 
@@ -35,7 +35,7 @@ limite por compr*/
         this.codigo = codigo;
     }
 
-    public int getPeriodo_em_dias() {
+    public int getPeriodo_em_dias(String s) {
         return periodo_em_dias;
     }
 
@@ -43,7 +43,7 @@ limite por compr*/
         this.periodo_em_dias = periodo_em_dias;
     }
 
-    public int getLimite() {
+    public int getLimite(String s) {
         return limite;
     }
 
