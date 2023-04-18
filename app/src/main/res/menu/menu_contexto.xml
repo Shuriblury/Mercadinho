@@ -4,6 +4,7 @@
 
     <item
         android:id="@+id/menuAlterarContexto"
+        android:onClick="alterar"
         android:title="Alterar" />
     <item
         android:id="@+id/menuExcluirContexto"

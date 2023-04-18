@@ -1,6 +1,8 @@
 package com.etec.mercadinhoxuxu.Model;
 
-public class Produto {
+import java.io.Serializable;
+
+public class Produto implements Serializable {
     /*código
     nome
     descrição
@@ -12,9 +14,17 @@ public class Produto {
     private String categoria;
 
     //2º criar construtores
-    public Produto(String codigo, String nome) {
+
+
+    public Produto() {
+
+    }
+
+    public Produto(String codigo, String nome, String descricao, String categoria) {
         this.codigo = codigo;
         this.nome = nome;
+        this.descricao = descricao;
+        this.categoria = categoria;
     }
 
     //3º getter e setter
@@ -48,5 +58,15 @@ public class Produto {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "codigo='" + codigo + '\'' +
+                ", nome='" + nome + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", categoria='" + categoria + '\'' +
+                '}';
     }
 }

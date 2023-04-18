@@ -81,4 +81,8 @@ public class FornecedorController {
         this.listaFornecedores.remove(fornecedorParaApagar);
         this.listaFornecedoresFiltro.remove(fornecedorParaApagar);
     }
+
+    public void atualizarFornecedor(Fornecedor fornecedor){
+        this.fornecedorDAO.alterarFornecedor(fornecedor, fornecedor.getCnpj());
+    }
 }

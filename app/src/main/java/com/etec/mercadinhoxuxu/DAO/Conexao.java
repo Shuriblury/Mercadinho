@@ -36,7 +36,7 @@ Telefone 1
 Telefone 2
 Endereço*/
     sqLiteDatabase.execSQL("create table fornecedor(" +
-            "cnpj primary key," +
+            "cnpj Varchar primary key," +
             "nome_fantasia varchar(100)," +
             "razao_social varchar(100)," +
             "telefone1 varchar(20)," +
