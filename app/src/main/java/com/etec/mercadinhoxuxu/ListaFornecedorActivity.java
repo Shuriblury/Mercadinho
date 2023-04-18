@@ -130,16 +130,27 @@ public class ListaFornecedorActivity extends AppCompatActivity {
                 })
                 .create();
         dialog.show();
+    }
 
 
+    public void alterar (MenuItem menuItem){
 
-
-
-
-
-
+        AdapterView.AdapterContextMenuInfo menuInfo =
+                (AdapterView.AdapterContextMenuInfo)
+                        menuItem.getMenuInfo();
+        final Fornecedor fornecedorParaAtualizar = fornecedorController.getListaFornecedoresFiltro(false).get(menuInfo.position);
+                fornecedorController
+                        .getListaFornecedoresFiltro(false)
+                        .get(menuInfo.position);
+        Intent intent =  new Intent(ListaFornecedorActivity.this, CadastroFornecedorActivity.class);
+        intent.putExtra("fornecedor", fornecedorParaAtualizar);
+        startActivity(intent);
 
     }
+
+
+
+
 
 
 
