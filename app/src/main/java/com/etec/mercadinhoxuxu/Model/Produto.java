@@ -1,6 +1,8 @@
 package com.etec.mercadinhoxuxu.Model;
 
-public class Produto {
+import java.io.Serializable;
+
+public class Produto implements Serializable {
     /*código
     nome
     descrição
@@ -51,5 +53,14 @@ public class Produto {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "nome='" + nome + '\'' +
+                ", categoria='" + categoria + '\'' +
+                ", descricao='" + descricao + '\'' +
+                '}';
     }
 }
