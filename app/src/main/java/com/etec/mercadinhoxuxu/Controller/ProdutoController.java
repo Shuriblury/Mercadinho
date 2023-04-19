@@ -37,7 +37,7 @@ public class ProdutoController {
             this.listaProdutos = new ArrayList<>();
         }
         if(this.listaProdutos.isEmpty()){
-            this.listaProdutos = produtoDAO.listaProdutosCadastrados();
+            this.listaProdutos = produtoDAO.listaProdutosFiltro();
         }
         return listaProdutos;
     }
@@ -48,22 +48,22 @@ public class ProdutoController {
 
     public List<Produto> getListaProdutosFiltro(boolean voltou) {
         if(this.getListaProdutos() == null ){
-            this.getListaProdutosFiltro() = this.getListaProdutos();
+            this.listaProdutosFiltro = this.getListaProdutos();
         }
         if(voltou ){
-            this.listaProdutos.addAll(this.produtoDAO.listaProdutosCadastrados());
+            this.listaProdutosFiltro.addAll(this.produtoDAO.listaProdutosFiltro());
         }
-        return listaProdutos;
+        return listaProdutosFiltro;
     }
 
-    public void setListaProdutoesFiltro(List<Produto> listaProdutosCadastrados) {
-        this.listaProdutos = listaProdutosCadastrados;
+    public void setListaProdutoesFiltro(List<Produto> listaProdutosFiltro) {
+        this.listaProdutos = listaProdutosFiltro;
     }
 
     //filtro para busca na lista
-    public void procuraProdutosCadastrados(String filtro){
+    public void procuraProdutosFiltro(String filtro){
         this.getListaProdutosFiltro(true).clear();
-        for(Produto produto : this.getListaProdutosFiltro()){
+        for(Produto produto : this.getListaProdutosFiltro(false)){
             if(produto.getCodigo().toLowerCase()
                     .contains(filtro.toLowerCase())){
                 this.getListaProdutosFiltro(false).add(produto);

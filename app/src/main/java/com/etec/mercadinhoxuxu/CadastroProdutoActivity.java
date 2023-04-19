@@ -20,7 +20,7 @@ public class CadastroProdutoActivity extends AppCompatActivity {
     private EditText descricao;
     private EditText categoria;
     private Button cadastrar;
-    private ProdutoController = new ProdutoController();
+    private ProdutoController produtoController = new ProdutoController();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class CadastroProdutoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_produto);
 
         ProdutoDAO produtoDAO = new ProdutoDAO(this);
-        ProdutoController.setProdutoDAO(produtoDAO);
+        produtoController.setProdutoDAO(produtoDAO);
 
 
         Produto produto = new Produto();
@@ -61,7 +61,7 @@ public class CadastroProdutoActivity extends AppCompatActivity {
 
 
 
-                ProdutoController.salvarProduto(view, produto);
+                produtoController.salvarProduto(view, produto);
 
             }
         });

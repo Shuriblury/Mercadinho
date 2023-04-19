@@ -11,6 +11,9 @@ public class Produto {
     private String descricao;
     private String categoria;
 
+    public Produto() {
+    }
+
     //2º criar construtores
     public Produto(String codigo, String nome) {
         this.codigo = codigo;

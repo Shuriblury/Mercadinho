@@ -19,14 +19,13 @@ import android.widget.SearchView;
 
 
 import com.etec.mercadinhoxuxu.Controller.FornecedorController;
-import com.etec.mercadinhoxuxu.Controller.ProdutoController;
 import com.etec.mercadinhoxuxu.DAO.FornecedorDAO;
 import com.etec.mercadinhoxuxu.Model.Fornecedor;
 
 public class ListaFornecedorActivity extends AppCompatActivity {
 
     private ListView listFornecedor;
-    private ProdutoController produtoController = new ProdutoController();
+    private FornecedorController fornecedorController = new FornecedorController();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

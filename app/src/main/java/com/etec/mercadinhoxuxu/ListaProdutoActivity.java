@@ -33,7 +33,7 @@ public class ListaProdutoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_produto);
-    }
+
 
 
 
@@ -44,10 +44,10 @@ public class ListaProdutoActivity extends AppCompatActivity {
     ProdutoDAO produtoDAO = new ProdutoDAO(this);
 
     //passando a conexão para o controller poder controlar
-        ProdutoController.setProdutoDAO(ProdutoDAO);
+        produtoController.setProdutoDAO(produtoDAO);
 
     //ensinando a lista da tela como deve ser mostrado cada item
-    ArrayAdapter<Produto> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, produtoController.getListaProdutosCadastrados(false));
+    ArrayAdapter<Produto> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, produtoController.getListaProdutosFiltro(false));
         listProduto.setAdapter(adapter);
 
     //contexto da lista de itens
@@ -75,7 +75,7 @@ public class ListaProdutoActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String s) {
-                ProdutoController.procuraProdutoFiltro(s);
+                produtoController.procuraProdutosFiltro(s);
                 listProduto.invalidateViews();
                 return false;
             }
@@ -95,9 +95,9 @@ public class ListaProdutoActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-        ProdutoController.getListaProdutoCadastrado(true).clear();
-        fornecedorController.getListaFornecedoresFiltro(true);
-        listFornecedor.invalidateViews();
+        produtoController.getListaProdutosFiltro(true).clear();
+        produtoController.getListaProdutosFiltro(true);
+        listProduto.invalidateViews();
 
     }
 
@@ -116,7 +116,7 @@ public class ListaProdutoActivity extends AppCompatActivity {
                         menuItem.getMenuInfo();
         final Produto produtoParaApagar =
                 produtoController
-                        .getListaProdutosCadastrados(false)
+                        .getListaProdutosFiltro(false)
                         .get(menuInfo.position);
         //dialogo com confirmação
         AlertDialog dialog = new AlertDialog
