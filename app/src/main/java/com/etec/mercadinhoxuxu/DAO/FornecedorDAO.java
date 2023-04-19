@@ -71,7 +71,17 @@ public class FornecedorDAO {
         banco.delete("fornecedor", "cnpj = ?"
                 ,new String[]{String.valueOf(fornecedor.getCnpj())});
     }
-
+    public void alterarFornecedor(Fornecedor fornecedor, String cnpj) {
+        ContentValues values = new ContentValues();
+        values.put("cnpj", fornecedor.getCnpj());
+        values.put("nome_fantasia", fornecedor.getNome_fantasia());
+        values.put("razao_social", fornecedor.getRazao_social());
+        values.put("telefone1", fornecedor.getTelefone_1());
+        values.put("telefone2", fornecedor.getTelefone_2());
+        values.put("endereco", fornecedor.getEndereco());
+        banco.update("fornecedor", values, "cnpj=?",
+                new String[]{String.valueOf(cnpj)});
+    }
 
 }
 

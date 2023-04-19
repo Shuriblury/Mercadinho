@@ -1,6 +1,8 @@
 package com.etec.mercadinhoxuxu.Model;
 
-public class Promocao {
+import java.io.Serializable;
+
+public class Promocao implements Serializable {
     /*data de início
 código do produto
 limite por compr*/
@@ -10,7 +12,7 @@ limite por compr*/
     private int limite;
 
     //construtor
-    public Promocao(String data_inicio, String codigo) {
+    public Promocao() {
         this.data_inicio = data_inicio;
         this.codigo = codigo;
         this.periodo_em_dias = -1;

@@ -19,76 +19,95 @@ import com.etec.mercadinhoxuxu.Model.Fornecedor;
 public class CadastroFornecedorActivity extends AppCompatActivity {
 
 
-        //tudo o que eu tenho na tela
-        private EditText cnpj;
-        private EditText nomeFantasia;
-        private EditText razaoSocial;
-        private EditText telefone1;
-        private EditText telefone2;
-        private EditText endereco;
-        private Button cadastrar;
-        private FornecedorController fornecedorController = new FornecedorController();
+    //tudo o que eu tenho na tela
+    private EditText cnpj;
+    private EditText nomeFantasia;
+    private EditText razaoSocial;
+    private EditText telefone1;
+    private EditText telefone2;
+    private EditText endereco;
+    private Button cadastrar;
+    private FornecedorController fornecedorController = new FornecedorController();
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_cadastro_fornecedor);
+    private Fornecedor fornecedorIntent = null;
 
-            FornecedorDAO fornecedorDAO = new FornecedorDAO(this);
-            fornecedorController.setFornecedorDAO(fornecedorDAO);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_cadastro_fornecedor);
 
-
-            Fornecedor fornecedor = new Fornecedor();
-
-            cnpj = findViewById(R.id.edtCnpj);
-            nomeFantasia = findViewById(R.id.edtNomeFantasia);
-            razaoSocial = findViewById(R.id.edtRazaoSocial);
-            telefone1 = findViewById(R.id.edtTelefone1);
-            telefone2 = findViewById(R.id.edtTelefone2);
-            endereco = findViewById(R.id.edtEndereco);
-
-            cadastrar = findViewById(R.id.btnCadastroFornecedor);
+        FornecedorDAO fornecedorDAO = new FornecedorDAO(this);
+        fornecedorController.setFornecedorDAO(fornecedorDAO);
 
 
-            //adapter pega uma lista/conjunto de dados do mesmo tipo
-            //e organiza de acordo com algum modelo
+        Fornecedor fornecedor = new Fornecedor();
 
-            //lista de times: São Paulo, Vasco, Corinthians, Palmeiras
+        cnpj = findViewById(R.id.edtCnpj);
+        nomeFantasia = findViewById(R.id.edtNomeFantasia);
+        razaoSocial = findViewById(R.id.edtRazaoSocial);
+        telefone1 = findViewById(R.id.edtTelefone1);
+        telefone2 = findViewById(R.id.edtTelefone2);
+        endereco = findViewById(R.id.edtEndereco);
 
-            //ArrayAdapter<String> adapterTimes =  new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item,fornecedor.getListaTimes());
-            //time.setAdapter(adapterTimes);
-
-
-            //ensinando ao botão salvar o que ele deve fazer
-            //quando acionado
-            cadastrar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    fornecedor.setCnpj(cnpj.getText().toString());
-                    fornecedor.setNome_fantasia(nomeFantasia.getText().toString());
-                    fornecedor.setRazao_social(razaoSocial.getText().toString());
-                    fornecedor.setTelefone_1(telefone1.getText().toString());
-                    fornecedor.setTelefone_2(telefone2.getText().toString());
-                    fornecedor.setEndereco(endereco.getText().toString());
+        cadastrar = findViewById(R.id.btnCadastroFornecedor);
 
 
-                    fornecedorController.salvarFornecedor(view, fornecedor);
+        //adapter pega uma lista/conjunto de dados do mesmo tipo
+        //e organiza de acordo com algum modelo
 
-                }
-            });
+        //lista de times: São Paulo, Vasco, Corinthians, Palmeiras
 
-            Button btnFornecedoresCadastrados = (Button) findViewById(R.id.btnFornecedoresCadastrados);
-            btnFornecedoresCadastrados.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //programando a intenção do botão, o que acontece quando eu aperto cima dele
-                    Intent intent = new Intent(CadastroFornecedorActivity.this, ListaFornecedorActivity.class);
-                    //criada a intenção precisamos iniciar ela
-                    startActivity(intent);
-                }
-            });
+        //ArrayAdapter<String> adapterTimes =  new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item,fornecedor.getListaTimes());
+        //time.setAdapter(adapterTimes);
 
-
-
+        Intent intent = getIntent();
+        if (intent.hasExtra("fornecedor")) {
+            //pegando a pessoa que eu mandei na intent
+            this.fornecedorIntent = (Fornecedor) intent.getSerializableExtra("fornecedor");
+            //preenchendo valores da intent
+            cnpj.setText(this.fornecedorIntent.getCnpj());
+            nomeFantasia.setText(this.fornecedorIntent.getNome_fantasia());
+            razaoSocial.setText(this.fornecedorIntent.getRazao_social());
+            telefone1.setText(this.fornecedorIntent.getTelefone_1());
+            telefone2.setText(this.fornecedorIntent.getTelefone_2());
+            endereco.setText(this.fornecedorIntent.getEndereco());
         }
+        //ensinando ao botão salvar o que ele deve fazer
+        //quando acionado
+        cadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fornecedor.setCnpj(cnpj.getText().toString());
+                fornecedor.setNome_fantasia(nomeFantasia.getText().toString());
+                fornecedor.setRazao_social(razaoSocial.getText().toString());
+                fornecedor.setTelefone_1(telefone1.getText().toString());
+                fornecedor.setTelefone_2(telefone2.getText().toString());
+                fornecedor.setEndereco(endereco.getText().toString());
+
+                if (fornecedorIntent == null) {
+                    fornecedorController.salvarFornecedor(view, fornecedor);
+                } else {
+                    fornecedorController.atualizarFornecedor(fornecedor);
+
+                }
+
+            }
+        });
+
+
+        Button btnFornecedoresCadastrados = (Button) findViewById(R.id.btnFornecedoresCadastrados);
+        btnFornecedoresCadastrados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //programando a intenção do botão, o que acontece quando eu aperto cima dele
+                Intent intent = new Intent(CadastroFornecedorActivity.this, ListaFornecedorActivity.class);
+                //criada a intenção precisamos iniciar ela
+                startActivity(intent);
+            }
+        });
+
+
     }
+}
+
+

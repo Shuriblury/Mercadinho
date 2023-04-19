@@ -2,6 +2,7 @@ package com.etec.mercadinhoxuxu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,19 +14,14 @@ import com.etec.mercadinhoxuxu.Model.Promocao;
 
 public class CadastrarPromocaoActivity extends AppCompatActivity {
 
-    /*M - Model
-    * v - View
-    * C - Controller*/
-    //precisamos criar os links com MVC
-    private PromocaoDAO promocaoDAO;
-    private PromocaoController promocaoController;
-
-    //campos utilizados na tela
     private EditText codigo_produto;
     private EditText periodo_dias;
     private EditText data_inicio;
     private EditText limite_compra;
+    private Button cadastrar;
+    private PromocaoController promocaoController = new PromocaoController();
 
+    private Promocao promocaoIntent = null;
 
 
     @Override
@@ -33,48 +29,58 @@ public class CadastrarPromocaoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_promocao);
 
-        //instacia dos objetos criados anteriormente
-        this.promocaoDAO = new PromocaoDAO(this);
-        this.promocaoController = new PromocaoController();
-        //this.promocaoController.
+        PromocaoDAO promocaoDAO = new PromocaoDAO(this);
+        promocaoController.setPromocaoDAO(promocaoDAO);
 
-        //botão que fica na tela de cadastro de promocao
-        Button btnCadastrar = (Button) findViewById(R.id.btnTelaCadastroPromocao);
 
-        //alimentando variaveis criadas anteriormente;
-        this.codigo_produto = findViewById(R.id.edtCodigoProdutoPromocao);
-        this.periodo_dias = findViewById(R.id.edtPeriodoEmdias);
-        this.data_inicio = findViewById(R.id.edtDataInicio);
-        this.limite_compra = findViewById(R.id.edtLimiteCompra);
+        Promocao promocao = new Promocao();
 
-        //agora precisamos ensinar o botão ao ser clicado
-        btnCadastrar.setOnClickListener(new View.OnClickListener() {
+        periodo_dias = findViewById(R.id.edtPeriodoEmdias);
+        data_inicio = findViewById(R.id.edtDataInicio);
+        codigo_produto = findViewById(R.id.edtCodigoProdutoPromocao);
+        limite_compra = findViewById(R.id.edtLimiteCompra);
+
+        cadastrar = findViewById(R.id.btnTelaCadastroPromocao);
+
+        Intent intent = getIntent();
+        if (intent.hasExtra("promocao")) {
+            this.promocaoIntent = (Promocao) intent.getSerializableExtra("promcao");
+
+            codigo_produto.setText(this.promocaoIntent.getCodigo());
+            periodo_dias.setText(this.promocaoIntent.getPeriodo_em_dias());
+            data_inicio.setText(this.promocaoIntent.getData_inicio());
+            limite_compra.setText(this.promocaoIntent.getLimite());
+        }
+
+        cadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*quando o botão for acionado, cria-se o obj, com as
-                * informações alimentadas em tela*/
-                Promocao promocao = new Promocao
-                        (data_inicio.getText().toString(),
-                        codigo_produto.getText().toString());
-                promocao.setLimite
-                        (Integer.parseInt(limite_compra.getText().toString()));
-                promocao.setPeriodo_em_dias
-                        (Integer.parseInt(periodo_dias.getText().toString()));
+                promocao.setCodigo(codigo_produto.getText().toString());
+                promocao.getPeriodo_em_dias();
+                promocao.getData_inicio();
+                promocao.getLimite();
 
-                promocaoController.addPromocao(promocao, view);
+                if (promocaoIntent == null) {
+                    promocaoController.salvarPromocao(view, promocao);
+                } else {
+                    promocaoController.atualizarPromocao(promocao);
+                }
 
+            }
+
+
+        });
+
+        Button btnPromocaoCadastrado = (Button) findViewById(R.id.btnTelaCadastroPromocao);
+        btnPromocaoCadastrado.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CadastrarPromocaoActivity.this, ListaPromocaoActivity.class);
+                startActivity(intent);
             }
         });
 
-
-
-
-
-
-
-
-
-
-
     }
+
 }
