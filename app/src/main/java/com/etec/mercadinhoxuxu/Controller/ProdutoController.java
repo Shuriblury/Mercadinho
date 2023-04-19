@@ -4,7 +4,7 @@ import android.widget.Toast;
 
 
 import com.etec.mercadinhoxuxu.DAO.ProdutoDAO;
-import com.etec.mercadinhoxuxu.Model.Fornecedor;
+
 import com.etec.mercadinhoxuxu.Model.Produto;
 
 import java.util.ArrayList;
@@ -48,7 +48,7 @@ public class ProdutoController {
     }
 
     public List<Produto> getListaProdutosFiltro(boolean voltou) {
-        if(this.getListaProdutos() == null ){
+        if(this.listaProdutosFiltro == null ){
             this.listaProdutosFiltro = this.getListaProdutos();
         }
         if(voltou ){
@@ -57,7 +57,7 @@ public class ProdutoController {
         return listaProdutosFiltro;
     }
 
-    public void setListaProdutoesFiltro(List<Produto> listaProdutosFiltro) {
+    public void setListaProdutosFiltro(List<Produto> listaProdutosFiltro) {
         this.listaProdutos = listaProdutosFiltro;
     }
 
@@ -81,7 +81,7 @@ public class ProdutoController {
 
     public void removerProdutoDasListas(Produto produtoParaApagar) {
         this.listaProdutos.remove(produtoParaApagar);
-        this.listaProdutos.remove(produtoParaApagar);
+        this.listaProdutosFiltro.remove(produtoParaApagar);
     }
     public void atualizarProduto(Produto produto){
         this.produtoDAO.alterarProduto(produto, produto.getNome());

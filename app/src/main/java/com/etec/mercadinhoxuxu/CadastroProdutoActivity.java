@@ -77,24 +77,14 @@ public class CadastroProdutoActivity extends AppCompatActivity {
                     produtoController.salvarProduto(view, produto);
                 } else {
                     produtoController.atualizarProduto(produto);
-
                 }
 
-            }
-        });
-
-        Button btnProdutosCadastrados = (Button) findViewById(R.id.btnCadastrarProduto);
-        btnProdutosCadastrados.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 //programando a intenção do botão, o que acontece quando eu aperto cima dele
                 Intent intent = new Intent(CadastroProdutoActivity.this, ListaProdutoActivity.class);
                 //criada a intenção precisamos iniciar ela
                 startActivity(intent);
+
             }
         });
-
-
-
     }
 }

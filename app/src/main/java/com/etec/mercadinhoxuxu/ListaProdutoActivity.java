@@ -125,8 +125,7 @@ public class ListaProdutoActivity extends AppCompatActivity {
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        //removendo fornecedor
-                        //remover a fornecedor da lista
+
                         produtoController.removerProdutoDasListas(produtoParaApagar);
                         produtoController.excluirProduto(produtoParaApagar);
                         listProduto.invalidateViews();
