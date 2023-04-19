@@ -53,14 +53,13 @@ public class CadastroProdutoActivity extends AppCompatActivity {
         //time.setAdapter(adapterTimes);
 
         Intent intent = getIntent();
-        if(intent.hasExtra("produto")){
+        if (intent.hasExtra("produto")) {
             this.produtoIntent = (Produto) intent.getSerializableExtra("produto");
             //preenchendo valores da intent
             nome.setText(this.produtoIntent.getNome());
             descricao.setText(this.produtoIntent.getDescricao());
             categoria.setText(this.produtoIntent.getCategoria());
         }
-
 
 
         //ensinando ao botão salvar o que ele deve fazer
@@ -86,5 +85,26 @@ public class CadastroProdutoActivity extends AppCompatActivity {
 
             }
         });
+
+
+        Button btnProdutosCadastrados = (Button) findViewById(R.id.btnProdutosCadastrados);
+        btnProdutosCadastrados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //programando a intenção do botão, o que acontece quando eu aperto cima dele
+                Intent intent = new Intent(CadastroProdutoActivity.this, ListaProdutoActivity.class);
+                //criada a intenção precisamos iniciar ela
+                startActivity(intent);
+            }
+        });
+
+        /*btnProdutosCadastrados.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            //programando a intenção do botão, o que acontece quando eu aperto cima dele
+            Intent intent = new Intent(CadastroProdutoActivity.this, ListaProdutoActivity.class);
+            //criada a intenção precisamos iniciar ela
+            startActivity(intent);
+        }*/
     }
 }
