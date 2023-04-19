@@ -20,7 +20,9 @@ public class CadastroProdutoActivity extends AppCompatActivity {
     private EditText descricao;
     private EditText categoria;
     private Button cadastrar;
-    private ProdutoController produtoController= new ProdutoController();
+    private ProdutoController produtoController = new ProdutoController();
+
+    private Produto produtoIntent = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +30,7 @@ public class CadastroProdutoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_produto);
 
         ProdutoDAO produtoDAO = new ProdutoDAO(this);
-        ProdutoController.setProdutoDAO(produtoDAO);
+        produtoController.setProdutoDAO(produtoDAO);
 
 
         Produto produto = new Produto();
@@ -49,6 +51,15 @@ public class CadastroProdutoActivity extends AppCompatActivity {
         //ArrayAdapter<String> adapterTimes =  new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item,fornecedor.getListaTimes());
         //time.setAdapter(adapterTimes);
 
+        Intent intent = getIntent();
+        if (intent.hasExtra("produto")) {
+            this.produtoIntent = (Produto) intent.getSerializableExtra("produto");
+            //preenchendo valores da intent
+            nome.setText(this.produtoIntent.getNome());
+            descricao.setText(this.produtoIntent.getDescricao());
+            categoria.setText(this.produtoIntent.getCategoria());
+        }
+
 
         //ensinando ao botão salvar o que ele deve fazer
         //quando acionado
@@ -60,13 +71,22 @@ public class CadastroProdutoActivity extends AppCompatActivity {
                 produto.setDescricao(descricao.getText().toString());
 
 
+                if (produtoIntent == null) {
+                    produtoController.salvarProduto(view, produto);
+                } else {
+                    produtoController.atualizarProduto(produto);
+                }
 
-                ProdutoController.salvarProduto(view, produto);
+                //programando a intenção do botão, o que acontece quando eu aperto cima dele
+                Intent intent = new Intent(CadastroProdutoActivity.this, ListaProdutoActivity.class);
+                //criada a intenção precisamos iniciar ela
+                startActivity(intent);
 
             }
         });
 
-        Button btnProdutosCadastrados = (Button) findViewById(R.id.btnCadastrarProduto);
+
+        Button btnProdutosCadastrados = (Button) findViewById(R.id.btnProdutosCadastrados);
         btnProdutosCadastrados.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,7 +97,13 @@ public class CadastroProdutoActivity extends AppCompatActivity {
             }
         });
 
-
-
+        /*btnProdutosCadastrados.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            //programando a intenção do botão, o que acontece quando eu aperto cima dele
+            Intent intent = new Intent(CadastroProdutoActivity.this, ListaProdutoActivity.class);
+            //criada a intenção precisamos iniciar ela
+            startActivity(intent);
+        }*/
     }
 }

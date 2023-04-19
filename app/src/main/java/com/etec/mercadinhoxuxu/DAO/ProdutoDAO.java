@@ -63,4 +63,13 @@ public class ProdutoDAO {
                 ,new String[]{String.valueOf(produto.getNome())});
     }
 
+    public void alterarProduto(Produto produto, String nome) {
+        ContentValues values = new ContentValues();
+        values.put("nome", produto.getNome());
+        values.put("descricao", produto.getDescricao());
+        values.put("categoria", produto.getCategoria());
+        banco.update("produto", values, "nome=?",
+                new String[]{String.valueOf(nome)});
+    }
+
 }

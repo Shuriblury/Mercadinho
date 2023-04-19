@@ -13,18 +13,13 @@ public class Produto implements Serializable {
     private String descricao;
     private String categoria;
 
-    //2º criar construtores
-
-
     public Produto() {
-
     }
 
-    public Produto(String codigo, String nome, String descricao, String categoria) {
+    //2º criar construtores
+    public Produto(String codigo, String nome) {
         this.codigo = codigo;
         this.nome = nome;
-        this.descricao = descricao;
-        this.categoria = categoria;
     }
 
     //3º getter e setter
@@ -63,10 +58,9 @@ public class Produto implements Serializable {
     @Override
     public String toString() {
         return "Produto{" +
-                "codigo='" + codigo + '\'' +
-                ", nome='" + nome + '\'' +
-                ", descricao='" + descricao + '\'' +
+                "nome='" + nome + '\'' +
                 ", categoria='" + categoria + '\'' +
+                ", descricao='" + descricao + '\'' +
                 '}';
     }
 }
