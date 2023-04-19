@@ -16,43 +16,48 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 
-
-
 import com.etec.mercadinhoxuxu.Controller.FornecedorController;
 import com.etec.mercadinhoxuxu.Controller.ProdutoController;
 import com.etec.mercadinhoxuxu.DAO.FornecedorDAO;
+import com.etec.mercadinhoxuxu.DAO.ProdutoDAO;
 import com.etec.mercadinhoxuxu.Model.Fornecedor;
+import com.etec.mercadinhoxuxu.Model.Produto;
 
-public class ListaFornecedorActivity extends AppCompatActivity {
+public class ListaProdutoActivity extends AppCompatActivity {
 
-    private ListView listFornecedor;
+    private ListView listProduto;
     private ProdutoController produtoController = new ProdutoController();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_fornecedor);
-
-        // apontando variavel local para o componente da tela
-        listFornecedor = findViewById(R.id.listFornecedor);
-
-        //iniciando a conexão do banco na tela que está aberta
-        FornecedorDAO fornecedorDAO = new FornecedorDAO(this);
-
-        //passando a conexão para o controller poder controlar
-        fornecedorController.setFornecedorDAO(fornecedorDAO);
-
-        //ensinando a lista da tela como deve ser mostrado cada item
-        ArrayAdapter<Fornecedor> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, fornecedorController.getListaFornecedoresFiltro(false));
-        listFornecedor.setAdapter(adapter);
-
-        //contexto da lista de itens
-        registerForContextMenu(listFornecedor);
-
+        setContentView(R.layout.activity_lista_produto);
     }
+
+
+
+    // apontando variavel local para o componente da tela
+    listProduto = findViewById(R.id.listProduto);
+
+    //iniciando a conexão do banco na tela que está aberta
+    ProdutoDAO produtoDAO = new ProdutoDAO(this);
+
+    //passando a conexão para o controller poder controlar
+        ProdutoController.setProdutoDAO(ProdutoDAO);
+
+    //ensinando a lista da tela como deve ser mostrado cada item
+    ArrayAdapter<Produto> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, produtoController.getListaProdutosCadastrados(false));
+        listProduto.setAdapter(adapter);
+
+    //contexto da lista de itens
+    registerForContextMenu(listProduto);
+
+}
 
     //fazendo o menu ser mostrado onde eu quero
     //sobrescrever o método
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -70,8 +75,8 @@ public class ListaFornecedorActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String s) {
-                fornecedorController.procuraFornecedorFiltro(s);
-                listFornecedor.invalidateViews();
+                ProdutoController.procuraProdutoFiltro(s);
+                listProduto.invalidateViews();
                 return false;
             }
         });
@@ -80,9 +85,9 @@ public class ListaFornecedorActivity extends AppCompatActivity {
 
 
     //para tela de cadastro
-   public  void menuAdicionar (MenuItem menuItem){
-    Intent intent = new Intent(ListaFornecedorActivity.this, CadastroFornecedorActivity.class);
-       startActivity(intent);
+    public  void menuAdicionar (MenuItem menuItem){
+        Intent intent = new Intent(ListaProdutoActivity.this, CadastroProdutoActivity.class);
+        startActivity(intent);
     }
 
     //para verificar o estado de ativo novamente da tela
@@ -90,7 +95,7 @@ public class ListaFornecedorActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-        fornecedorController.getListaFornecedoresFiltro(true).clear();
+        ProdutoController.getListaProdutoCadastrado(true).clear();
         fornecedorController.getListaFornecedoresFiltro(true);
         listFornecedor.invalidateViews();
 
@@ -109,9 +114,9 @@ public class ListaFornecedorActivity extends AppCompatActivity {
         AdapterView.AdapterContextMenuInfo menuInfo =
                 (AdapterView.AdapterContextMenuInfo)
                         menuItem.getMenuInfo();
-        final Fornecedor fornecedorParaApagar =
-                fornecedorController
-                        .getListaFornecedoresFiltro(false)
+        final Produto produtoParaApagar =
+                produtoController
+                        .getListaProdutosCadastrados(false)
                         .get(menuInfo.position);
         //dialogo com confirmação
         AlertDialog dialog = new AlertDialog
@@ -124,9 +129,9 @@ public class ListaFornecedorActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //removendo fornecedor
                         //remover a fornecedor da lista
-                        fornecedorController.removerFornecedorDasListas(fornecedorParaApagar);
-                        fornecedorController.excluirFornecedor(fornecedorParaApagar);
-                        listFornecedor.invalidateViews();
+                        produtoController.removerProdutoDasListas(produtoParaApagar);
+                        produtoController.excluirProduto(produtoParaApagar);
+                        listProduto.invalidateViews();
                     }
                 })
                 .create();
@@ -141,12 +146,4 @@ public class ListaFornecedorActivity extends AppCompatActivity {
 
 
     }
-
-
-
-
-
-
-
-
 }
