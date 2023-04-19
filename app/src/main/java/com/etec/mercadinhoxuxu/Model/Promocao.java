@@ -1,5 +1,7 @@
 package com.etec.mercadinhoxuxu.Model;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
 public class Promocao implements Serializable {
@@ -51,5 +53,15 @@ limite por compr*/
 
     public void setLimite(int limite) {
         this.limite = limite;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Promocao{" + "data_inicio='" + data_inicio + '\'' +
+                ", codigo='" + codigo + '\'' +
+                ", periodo_em_dias='" + periodo_em_dias + '\'' +
+                ", limite='" + limite + '\'' +
+                '}';
     }
 }

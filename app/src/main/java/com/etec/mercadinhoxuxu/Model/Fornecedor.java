@@ -76,7 +76,6 @@ public class Fornecedor implements Serializable {
                 ", razao_social='" + razao_social + '\'' +
                 ", telefone_1='" + telefone_1 + '\'' +
                 ", telefone_2='" + telefone_2 + '\'' +
-                ", endereco='" + endereco + '\'' +
-                '}';
+                ", endereco='" + endereco + '\'' + '}';
     }
 }

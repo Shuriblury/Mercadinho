@@ -10,7 +10,7 @@ import com.etec.mercadinhoxuxu.Model.Fornecedor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FornecedorDAO {
+public class  FornecedorDAO {
     private Conexao conexao;
     private SQLiteDatabase banco;
 
