@@ -22,12 +22,7 @@ public class Conexao extends SQLiteOpenHelper {
      //criação das tabelas
       //create table nome_tabela(atrib);
      //tabela produto
-        sqLiteDatabase.execSQL(
-             "create table fornecedor(cnpj primary key," +
-                     "nome varchar(50)," +
-                     "descricao varchar(100)," +
-                     "categoria varchar(50))"
-     );
+
     //tabela fornecedor
         /*CNPJ
 Nome fantasia

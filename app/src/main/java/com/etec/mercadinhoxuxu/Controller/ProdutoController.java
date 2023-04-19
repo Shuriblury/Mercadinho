@@ -4,6 +4,7 @@ import android.widget.Toast;
 
 
 import com.etec.mercadinhoxuxu.DAO.ProdutoDAO;
+import com.etec.mercadinhoxuxu.Model.Fornecedor;
 import com.etec.mercadinhoxuxu.Model.Produto;
 
 import java.util.ArrayList;
@@ -81,5 +82,8 @@ public class ProdutoController {
     public void removerProdutoDasListas(Produto produtoParaApagar) {
         this.listaProdutos.remove(produtoParaApagar);
         this.listaProdutos.remove(produtoParaApagar);
+    }
+    public void atualizarProduto(Produto produto){
+        this.produtoDAO.alterarProduto(produto, produto.getNome());
     }
 }

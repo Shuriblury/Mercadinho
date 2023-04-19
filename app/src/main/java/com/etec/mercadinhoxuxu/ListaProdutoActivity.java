@@ -16,11 +16,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 
-import com.etec.mercadinhoxuxu.Controller.FornecedorController;
+
 import com.etec.mercadinhoxuxu.Controller.ProdutoController;
-import com.etec.mercadinhoxuxu.DAO.FornecedorDAO;
 import com.etec.mercadinhoxuxu.DAO.ProdutoDAO;
-import com.etec.mercadinhoxuxu.Model.Fornecedor;
 import com.etec.mercadinhoxuxu.Model.Produto;
 
 public class ListaProdutoActivity extends AppCompatActivity {
@@ -146,4 +144,20 @@ public class ListaProdutoActivity extends AppCompatActivity {
 
 
     }
+
+    public void alterar (MenuItem menuItem){
+
+        AdapterView.AdapterContextMenuInfo menuInfo =
+                (AdapterView.AdapterContextMenuInfo)
+                        menuItem.getMenuInfo();
+        final Produto produtoParaAtualizar = produtoController.getListaProdutosFiltro(false).get(menuInfo.position);
+        produtoController
+                .getListaProdutosFiltro(false)
+                .get(menuInfo.position);
+        Intent intent =  new Intent(ListaProdutoActivity.this, CadastroProdutoActivity.class);
+        intent.putExtra("produto", produtoParaAtualizar);
+        startActivity(intent);
+
+    }
+
 }

@@ -10,6 +10,7 @@ import android.widget.EditText;
 
 import com.etec.mercadinhoxuxu.Controller.ProdutoController;
 import com.etec.mercadinhoxuxu.DAO.ProdutoDAO;
+import com.etec.mercadinhoxuxu.Model.Fornecedor;
 import com.etec.mercadinhoxuxu.Model.Produto;
 
 public class CadastroProdutoActivity extends AppCompatActivity {
@@ -21,6 +22,8 @@ public class CadastroProdutoActivity extends AppCompatActivity {
     private EditText categoria;
     private Button cadastrar;
     private ProdutoController produtoController = new ProdutoController();
+
+    private Produto produtoIntent = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,16 @@ public class CadastroProdutoActivity extends AppCompatActivity {
         //ArrayAdapter<String> adapterTimes =  new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item,fornecedor.getListaTimes());
         //time.setAdapter(adapterTimes);
 
+        Intent intent = getIntent();
+        if(intent.hasExtra("produto")){
+            this.produtoIntent = (Produto) intent.getSerializableExtra("produto");
+            //preenchendo valores da intent
+            nome.setText(this.produtoIntent.getNome());
+            descricao.setText(this.produtoIntent.getDescricao());
+            categoria.setText(this.produtoIntent.getCategoria());
+        }
+
+
 
         //ensinando ao botão salvar o que ele deve fazer
         //quando acionado
@@ -60,8 +73,12 @@ public class CadastroProdutoActivity extends AppCompatActivity {
                 produto.setDescricao(descricao.getText().toString());
 
 
+                if (produtoIntent == null) {
+                    produtoController.salvarProduto(view, produto);
+                } else {
+                    produtoController.atualizarProduto(produto);
 
-                produtoController.salvarProduto(view, produto);
+                }
 
             }
         });
