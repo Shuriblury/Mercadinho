@@ -2,6 +2,7 @@ package com.etec.mercadinhoxuxu.DAO;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.etec.mercadinhoxuxu.Model.Fornecedor;

@@ -20,7 +20,7 @@ public class CadastroProdutoActivity extends AppCompatActivity {
     private EditText descricao;
     private EditText categoria;
     private Button cadastrar;
-    private ProdutoController = new ProdutoController();
+    private ProdutoController = new ProdutoController ();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
