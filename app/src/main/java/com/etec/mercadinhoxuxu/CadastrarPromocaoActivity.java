@@ -21,6 +21,8 @@ public class CadastrarPromocaoActivity extends AppCompatActivity {
     private Button cadastrar;
     private PromocaoController promocaoController = new PromocaoController();
 
+    private Promocao promocaoIntent = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,55 +42,45 @@ public class CadastrarPromocaoActivity extends AppCompatActivity {
 
         cadastrar = findViewById(R.id.btnTelaCadastroPromocao);
 
+        Intent intent = getIntent();
+        if (intent.hasExtra("promocao")) {
+            this.promocaoIntent = (Promocao) intent.getSerializableExtra("promcao");
+
+            codigo_produto.setText(this.promocaoIntent.getCodigo());
+            periodo_dias.setText(this.promocaoIntent.getPeriodo_em_dias());
+            data_inicio.setText(this.promocaoIntent.getData_inicio());
+            limite_compra.setText(this.promocaoIntent.getLimite());
+        }
+
         cadastrar.setOnClickListener(new View.OnClickListener() {
-                                         @Override
-                                         public void onClick(View view) {
-                                             promocao.setCodigo(codigo_produto.getText().toString());
-                                             promocao.getPeriodo_em_dias(periodo_dias.getText().toString());
-                                             promocao.getData_inicio(data_inicio.getText().toString());
-                                             promocao.getLimite(limite_compra.getText().toString());
+            @Override
+            public void onClick(View view) {
+                promocao.setCodigo(codigo_produto.getText().toString());
+                promocao.getPeriodo_em_dias();
+                promocao.getData_inicio();
+                promocao.getLimite();
 
-                                             promocaoController.salvarPromocao(view, promocao);
+                if (promocaoIntent == null) {
+                    promocaoController.salvarPromocao(view, promocao);
+                } else {
+                    promocaoController.atualizarPromocao(promocao);
+                }
 
-                                         }
-                                     });
+            }
 
-       Button btnPromocaoCadastrado = (Button) findViewById(R.id.btnTelaCadastroPromocao);
-       btnPromocaoCadastrado.setOnClickListener(new View.OnClickListener(){
 
-           @Override
-           public void onClick(View view) {
-               Intent intent = new Intent(CadastrarPromocaoActivity.this, Lista)
-           }
-       });
+        });
 
+        Button btnPromocaoCadastrado = (Button) findViewById(R.id.btnTelaCadastroPromocao);
+        btnPromocaoCadastrado.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                /*quando o botão for acionado, cria-se o obj, com as
-                * informações alimentadas em tela*/
-                Promocao promocao = new Promocao
-                        (
-                        );
-                promocao.setLimite
-                        (Integer.parseInt(limite_compra.getText().toString()));
-                promocao.setPeriodo_em_dias
-                        (Integer.parseInt(periodo_dias.getText().toString()));
-
-                promocaoController.addPromocao(promocao, view);
-
+                Intent intent = new Intent(CadastrarPromocaoActivity.this, ListaPromocaoActivity.class);
+                startActivity(intent);
             }
         });
 
-
-
-
-
-
-
-
-
-
-
     }
+
 }

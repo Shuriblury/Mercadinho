@@ -11,6 +11,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class PromocaoController {
     private PromocaoDAO promocaoDAO;
@@ -45,12 +46,12 @@ public PromocaoDAO getPromocaoDAO(){return promocaoDAO;}
         this.listaPromocao = listaPromocao;
     }
 
-    public List<Promocao> getListaPromocaoFiltro() {
+    public List<Promocao> getListaPromocaoFiltro(boolean voltou) {
 
         if(this.listaPromocaoFiltro == null ){
             this.listaPromocaoFiltro = this.getListaPromocao();
         }
-        if(this.listaPromocaoFiltro.isEmpty()){
+        if(voltou){
             this.listaPromocaoFiltro.addAll(this.promocaoDAO.listaPromocaoCadastrada());
         }
 
@@ -61,6 +62,15 @@ public PromocaoDAO getPromocaoDAO(){return promocaoDAO;}
         this.listaPromocaoFiltro = listaPromocaoFiltro;
     }
 
+    public void procuraPromocaoFiltro(String filtro){
+    this.getListaPromocaoFiltro(true).clear();
+    for (Promocao promocao : this.getListaPromocao()){
+        if (promocao.getCodigo().toLowerCase().contains(filtro.toLowerCase())){
+            this.getListaPromocaoFiltro(false).add(promocao);
+             }
+         }
+    }
+
     public void excluirPromocao(Promocao promocao){
     this.promocaoDAO.excluirPromocao(promocao);
     }
@@ -68,6 +78,10 @@ public PromocaoDAO getPromocaoDAO(){return promocaoDAO;}
     public void removerPromocaoDasListas(Promocao promocaoParaApagar){
     this.listaPromocao.remove(promocaoParaApagar);
     this.listaPromocaoFiltro.remove(promocaoParaApagar);
+    }
+
+    public void atualizarPromocao(Promocao promocao){
+    this.promocaoDAO.alterarPromocao(promocao, promocao.getCodigo());
     }
 
 }

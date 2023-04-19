@@ -31,9 +31,9 @@ public class PromocaoDAO {
         //insert into nome_tabela(colunas) values(valores)
         ContentValues valores = new ContentValues();
         valores.put("codigo_produto", promocao.getCodigo());
-        valores.put("periodo_dias", promocao.getPeriodo_em_dias(periodo_dias.getText().toString()));
-        valores.put("data_inicio", promocao.getData_inicio(data_inicio.getText().toString()));
-        valores.put("limite_compra", promocao.getLimite(limite_compra.getText().toString()));
+        valores.put("periodo_dias", promocao.getPeriodo_em_dias());
+        valores.put("data_inicio", promocao.getData_inicio());
+        valores.put("limite_compra", promocao.getLimite());
 
         return banco.insert("promocao",null, valores);
     }
@@ -60,6 +60,19 @@ public class PromocaoDAO {
 
    public void excluirPromocao(Promocao promocao){
         banco.delete("Promocao", "codigo_produto", new String[]{String.valueOf(promocao.getCodigo())});
+   }
+
+   public void alterarPromocao(Promocao promocao, String Codigo){
+
+        ContentValues values = new ContentValues();
+        values.put("codigo_produto", promocao.getCodigo());
+        values.put("periodo_dias", promocao.getPeriodo_em_dias());
+        values.put("data_inicio", promocao.getData_inicio());
+        values.put("limite_compra", promocao.getLimite());
+        banco.update("promocao", values, "codigo_produto=?",
+                new String[]{String.valueOf(Codigo)});
+
+
    }
 
 }
