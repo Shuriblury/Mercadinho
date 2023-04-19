@@ -21,6 +21,9 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".ListaPromocaoActivity"
+            android:exported="false" />
+        <activity
             android:name=".ListaFornecedorActivity"
             android:exported="false" />
         <activity
