@@ -20,6 +20,9 @@ public class Produto implements Serializable {
     public Produto(String codigo, String nome) {
         this.codigo = codigo;
         this.nome = nome;
+        this.categoria = categoria;
+        this.descricao = descricao;
+
     }
 
     //3º getter e setter
@@ -58,6 +61,7 @@ public class Produto implements Serializable {
     @Override
     public String toString() {
         return "Produto{" +
+                ", codigo='" + codigo + '\'' +
                 "nome='" + nome + '\'' +
                 ", categoria='" + categoria + '\'' +
                 ", descricao='" + descricao + '\'' +
