@@ -72,6 +72,7 @@ public class CadastroFornecedorActivity extends AppCompatActivity {
             telefone2.setText(this.fornecedorIntent.getTelefone_2());
             endereco.setText(this.fornecedorIntent.getEndereco());
         }
+
         //ensinando ao botão salvar o que ele deve fazer
         //quando acionado
         cadastrar.setOnClickListener(new View.OnClickListener() {

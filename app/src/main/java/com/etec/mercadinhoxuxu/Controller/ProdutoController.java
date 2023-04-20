@@ -64,10 +64,10 @@ public class ProdutoController {
     //filtro para busca na lista
     public void procuraProdutosFiltro(String filtro){
         this.getListaProdutosFiltro(true).clear();
-        for(Produto produto : this.getListaProdutosFiltro(false)){
+        for(Produto produto : this.getListaProdutos()){
             if(produto.getNome().toLowerCase()
                     .contains(filtro.toLowerCase())){
-                this.listaProdutosFiltro.add(produto);
+                this.getListaProdutosFiltro(false).add(produto);
             }
         }
 

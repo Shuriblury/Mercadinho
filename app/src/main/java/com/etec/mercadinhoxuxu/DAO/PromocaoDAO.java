@@ -49,9 +49,9 @@ public class PromocaoDAO {
             Promocao promocaoAtual = new Promocao();
 
             promocaoAtual.setCodigo(cursor.getString(0));
-            promocaoAtual.setPeriodo_em_dias(cursor.getInt(1));
+            promocaoAtual.setPeriodo_em_dias(cursor.getString(1));
             promocaoAtual.setData_inicio(cursor.getString(2));
-            promocaoAtual.setLimite(cursor.getInt(3));
+            promocaoAtual.setLimite(cursor.getString(3));
 
             promocaoEncontrada.add(promocaoAtual);
         }
