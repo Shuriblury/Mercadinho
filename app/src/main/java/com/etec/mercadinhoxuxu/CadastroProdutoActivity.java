@@ -20,7 +20,9 @@ public class CadastroProdutoActivity extends AppCompatActivity {
     private EditText nome;
     private EditText descricao;
     private EditText categoria;
+    private EditText codigo;
     private Button cadastrar;
+
     private ProdutoController produtoController = new ProdutoController();
 
     private Produto produtoIntent = null;
@@ -39,6 +41,7 @@ public class CadastroProdutoActivity extends AppCompatActivity {
         nome = findViewById(R.id.edtNomeProduto);
         categoria = findViewById(R.id.edtCategoriaProduto);
         descricao = findViewById(R.id.edtDescricaoProduto);
+        codigo = findViewById(R.id.edtCodigoProduto);
 
 
         cadastrar = findViewById(R.id.btnCadastrarProduto);
@@ -56,6 +59,7 @@ public class CadastroProdutoActivity extends AppCompatActivity {
         if (intent.hasExtra("produto")) {
             this.produtoIntent = (Produto) intent.getSerializableExtra("produto");
             //preenchendo valores da intent
+            codigo.setText(this.produtoIntent.getCodigo());
             nome.setText(this.produtoIntent.getNome());
             descricao.setText(this.produtoIntent.getDescricao());
             categoria.setText(this.produtoIntent.getCategoria());
@@ -67,6 +71,7 @@ public class CadastroProdutoActivity extends AppCompatActivity {
         cadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                produto.setCodigo(codigo.getText().toString());
                 produto.setNome(nome.getText().toString());
                 produto.setCategoria(categoria.getText().toString());
                 produto.setDescricao(descricao.getText().toString());

@@ -19,8 +19,6 @@ limite por compr*/
         this.limite = -1;
     }
     //getter e setter
-
-
     public String getData_inicio() {
         return data_inicio;
     }
