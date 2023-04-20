@@ -8,6 +8,7 @@ public class Produto implements Serializable {
     descrição
     categoria: bebida, bebida alcoólica, grão, laticínios, fruta, leguminosa... etc*/
     // 1º passo -> criar variaveis
+    private int id;
     private String codigo;
     private String nome;
     private String descricao;
@@ -17,12 +18,24 @@ public class Produto implements Serializable {
     }
 
     //2º criar construtores
-    public Produto(String codigo, String nome) {
+    public Produto() {
+        this.id = id;
         this.codigo = codigo;
         this.nome = nome;
+        this.descricao = descricao;
+        this.categoria = categoria;
     }
 
     //3º getter e setter
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getCodigo() {
         return codigo;
     }

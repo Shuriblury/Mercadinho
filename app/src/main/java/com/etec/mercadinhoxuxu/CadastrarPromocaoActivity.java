@@ -78,6 +78,18 @@ public class CadastrarPromocaoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(CadastrarPromocaoActivity.this, ListaPromocaoActivity.class);
                 startActivity(intent);
+                /*quando o botão for acionado, cria-se o obj, com as
+                * informações alimentadas em tela*/
+                Promocao promocao = new Promocao
+                        (
+                        );
+                promocao.setLimite
+                        (Integer.parseInt(limite_compra.getText().toString()));
+                promocao.setPeriodo_em_dias
+                        (Integer.parseInt(periodo_dias.getText().toString()));
+
+                promocaoController.addPromocao(promocao, view);
+
             }
         });
 
