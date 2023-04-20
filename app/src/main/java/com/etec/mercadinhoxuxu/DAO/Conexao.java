@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 //baixo volume de dados.
 public class Conexao extends SQLiteOpenHelper {
     //constante que representa o nome da base de dados;
-    private static String NOMEDOBANCO = "mercado.db";
+    private static String NOMEDOBANCO = "mercado2.db";
     //constante que representa a versão do banco
     private static int VERSION = 1;
 
@@ -43,13 +43,14 @@ data de início
 código do produto
 limite por compr*/
     sqLiteDatabase.execSQL("create table promocao(" +
-            "codigo_produto primary key," +
+            "codigo int primary key,"+
+            "codigo_produto varchar(50)," +
             "periodo_dias varchar(10)," +
             "data_inicio varchar(10)," +
             "limite_compra int)");
 
         sqLiteDatabase.execSQL("create table produto(" +
-                "codigo primary key," +
+                "codigo varchar(50) primary key," +
                 "nome varchar(20)," +
                 "descricao''(20)," +
                 "categoria varchar(20))");

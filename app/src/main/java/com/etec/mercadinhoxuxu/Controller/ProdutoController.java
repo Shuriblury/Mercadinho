@@ -51,7 +51,7 @@ public class ProdutoController {
         if(this.listaProdutosFiltro == null ){
             this.listaProdutosFiltro = this.getListaProdutos();
         }
-        if(voltou ){
+        if(voltou){
             this.listaProdutosFiltro.addAll(this.produtoDAO.listaProdutosFiltro());
         }
         return listaProdutosFiltro;
@@ -65,14 +65,13 @@ public class ProdutoController {
     public void procuraProdutosFiltro(String filtro){
         this.getListaProdutosFiltro(true).clear();
         for(Produto produto : this.getListaProdutosFiltro(false)){
-            if(produto.getCodigo().toLowerCase()
+            if(produto.getNome().toLowerCase()
                     .contains(filtro.toLowerCase())){
-                this.getListaProdutosFiltro(false).add(produto);
+                this.listaProdutosFiltro.add(produto);
             }
         }
 
     }
-
 
     //função excluir
     public void excluirProduto(Produto produto){
@@ -84,6 +83,6 @@ public class ProdutoController {
         this.listaProdutosFiltro.remove(produtoParaApagar);
     }
     public void atualizarProduto(Produto produto){
-        this.produtoDAO.alterarProduto(produto, produto.getNome());
+        this.produtoDAO.alterarProduto(produto, produto.getCodigo());
     }
 }

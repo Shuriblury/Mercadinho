@@ -23,10 +23,10 @@ public class Produto implements Serializable {
         this.id = id;
         this.codigo = codigo;
         this.nome = nome;
-        this.descricao = descricao;
         this.categoria = categoria;
-    }
+        this.descricao = descricao;
 
+    }
 
     //3º getter e setter
 
@@ -73,6 +73,7 @@ public class Produto implements Serializable {
     @Override
     public String toString() {
         return "Produto{" +
+                ", codigo='" + codigo + '\'' +
                 "nome='" + nome + '\'' +
                 ", categoria='" + categoria + '\'' +
                 ", descricao='" + descricao + '\'' +

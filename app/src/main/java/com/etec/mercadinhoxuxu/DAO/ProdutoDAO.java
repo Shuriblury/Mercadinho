@@ -19,6 +19,9 @@ public class ProdutoDAO {
     private Conexao conexao;
     private SQLiteDatabase banco;
 
+    public ProdutoDAO() {
+    }
+
     public ProdutoDAO(Context context){
         this.conexao = new Conexao(context);
         this.banco = conexao.getWritableDatabase();
@@ -69,7 +72,7 @@ public List<Produto> listaProdutoCadastrado(){
         //Cursor é = a um ponteiro que "aponta" para a tabela
         //que eu desejo consultar
         Cursor cursor = banco.query("produto",
-                new String[]{"nome", "categoria", "descricao"},
+                new String[]{ "codigo","nome", "categoria", "descricao"},
                 null, null, null,
                 null,null, null);
 
@@ -78,9 +81,10 @@ public List<Produto> listaProdutoCadastrado(){
         while(cursor.moveToNext()){
             Produto produtoAtual = new Produto();
 
-            produtoAtual.setNome(cursor.getString(0));
-            produtoAtual.setCategoria(cursor.getString(1));
-            produtoAtual.setDescricao(cursor.getString(2));
+            produtoAtual.setCodigo(cursor.getString(0));
+            produtoAtual.setNome(cursor.getString(1));
+            produtoAtual.setCategoria(cursor.getString(2));
+            produtoAtual.setDescricao(cursor.getString(3));
 
             produtosEncontrados.add(produtoAtual);
         }
@@ -89,17 +93,18 @@ public List<Produto> listaProdutoCadastrado(){
 
     //função responsavel por agapgar item do BD
     public void  excluirProduto(Produto produto){
-        banco.delete("produto", "nome = ?"
-                ,new String[]{String.valueOf(produto.getNome())});
+        banco.delete("produto", "codigo = ?"
+                ,new String[]{String.valueOf(produto.getCodigo())});
     }
 
-    public void alterarProduto(Produto produto, String nome) {
+    public void alterarProduto(Produto produto, String codigo) {
         ContentValues values = new ContentValues();
+        values.put("codigo", produto.getCodigo());
         values.put("nome", produto.getNome());
         values.put("descricao", produto.getDescricao());
         values.put("categoria", produto.getCategoria());
-        banco.update("produto", values, "nome=?",
-                new String[]{String.valueOf(nome)});
+        banco.update("produto", values, "codigo=?",
+                new String[]{String.valueOf(codigo)});
     }
 
 }
