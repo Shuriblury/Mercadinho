@@ -133,15 +133,6 @@ public class ListaProdutoActivity extends AppCompatActivity {
                 })
                 .create();
         dialog.show();
-
-
-
-
-
-
-
-
-
     }
 
     public void alterar (MenuItem menuItem){
