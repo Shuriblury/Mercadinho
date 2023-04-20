@@ -59,7 +59,8 @@ public class PromocaoDAO {
    }
 
    public void excluirPromocao(Promocao promocao){
-        banco.delete("Promocao", "codigo_produto", new String[]{String.valueOf(promocao.getCodigo())});
+        banco.delete("promocao", "codigo_produto = ?",
+                new String[]{String.valueOf(promocao.getCodigo())});
    }
 
    public void alterarPromocao(Promocao promocao, String Codigo){
