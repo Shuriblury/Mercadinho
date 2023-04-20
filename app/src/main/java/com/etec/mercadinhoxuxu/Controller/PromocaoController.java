@@ -51,11 +51,11 @@ private List<Promocao> listaPromocaoFiltro;
         this.listaPromocao = listaPromocao;
     }
 
-    public List<Promocao> getListaPromocaoFiltro() {
+    public List<Promocao> getListaPromocaoFiltro(boolean voltou) {
         if(this.listaPromocaoFiltro == null ){
             this.listaPromocaoFiltro = this.getListaPromocao();
         }
-        if(this.listaPromocaoFiltro.isEmpty()){
+        if(voltou){
             this.listaPromocaoFiltro.addAll(this.promocaoDAO.listaPromocaoCadastrada());
         }
         return listaPromocaoFiltro;
@@ -79,7 +79,7 @@ private List<Promocao> listaPromocaoFiltro;
             //a função inserir criada no DAO retorna um long
             //podemos utilizar ele para saber se esta ok
             //com o procedimento
-            long promocaoInId = promocaoDAO.inserirNaTabela(promocao);
+            long promocaoInId = promocaoDAO.inserirPromocao(promocao);
             System.out.println(promocaoInId);
 
             //mostrar popup de mensagem na tela
@@ -96,4 +96,13 @@ private List<Promocao> listaPromocaoFiltro;
     this.promocaoDAO.alterarPromocao(promocao, promocao.getCodigo());
     }
 
+    public void procuraPromocaoFiltro(String s) {
+      //falta fazer
+    }
+
+    public void removerPromocaoDasListas(Promocao promocaoParaApagar) {
+    }
+
+    public void excluirPromocao(Promocao promocaoParaApagar) {
+    }
 }

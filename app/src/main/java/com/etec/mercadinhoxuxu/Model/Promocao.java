@@ -1,6 +1,10 @@
 package com.etec.mercadinhoxuxu.Model;
 
-public class Promocao {
+import androidx.annotation.NonNull;
+
+import java.io.Serializable;
+
+public class Promocao  implements Serializable {
     /*data de início
 código do produto
 limite por compr*/

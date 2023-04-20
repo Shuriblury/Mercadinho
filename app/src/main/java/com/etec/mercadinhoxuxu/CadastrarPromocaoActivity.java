@@ -61,7 +61,7 @@ public class CadastrarPromocaoActivity extends AppCompatActivity {
                 promocao.getLimite();
 
                 if (promocaoIntent == null) {
-                    promocaoController.salvarPromocao(view, promocao);
+                    promocaoController.addPromocao(promocao, view);
                 } else {
                     promocaoController.atualizarPromocao(promocao);
                 }

@@ -18,13 +18,15 @@ public class Produto implements Serializable {
     }
 
     //2º criar construtores
-    public Produto() {
+
+    public Produto(int id, String codigo, String nome, String descricao, String categoria) {
         this.id = id;
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
         this.categoria = categoria;
     }
+
 
     //3º getter e setter
 
