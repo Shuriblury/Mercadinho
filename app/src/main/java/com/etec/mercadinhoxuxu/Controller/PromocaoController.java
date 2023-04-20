@@ -96,13 +96,22 @@ private List<Promocao> listaPromocaoFiltro;
     this.promocaoDAO.alterarPromocao(promocao, promocao.getCodigo());
     }
 
-    public void procuraPromocaoFiltro(String s) {
-      //falta fazer
+    public void procuraPromocaoFiltro(String filtro) {
+      this.getListaPromocaoFiltro(true).clear();
+      for (Promocao promocao : this.getListaPromocao()){
+          if (promocao.getCodigo().toLowerCase().contains(filtro.toLowerCase())){
+              this.getListaPromocaoFiltro(false).add(promocao);
+          }
+      }
+
     }
 
     public void removerPromocaoDasListas(Promocao promocaoParaApagar) {
+      this.listaPromocao.remove(promocaoParaApagar);
+      this.listaPromocaoFiltro.remove(promocaoParaApagar);
     }
 
-    public void excluirPromocao(Promocao promocaoParaApagar) {
+    public void excluirPromocao(Promocao promocao) {
+      this.promocaoDAO.excluirPromocao(promocao);
     }
 }
