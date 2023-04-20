@@ -27,7 +27,7 @@ public class ProdutoController {
     //função responsavel por receber as informações
     //da view e enviar ao DAO
     public void salvarProduto(View view, Produto produto){
-        this.produtoDAO.inserir(produto);
+        this.produtoDAO.inserirProduto(produto);
         Toast.makeText(view.getContext(),
                 "Produto cadastrado",
                 Toast.LENGTH_SHORT).show();

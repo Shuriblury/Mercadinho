@@ -11,11 +11,12 @@
         android:layout_width="wrap_content"
         android:layout_height="64dp"
         android:layout_marginStart="11dp"
-        android:layout_marginTop="62dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="11dp"
-        android:text="Mercadinho XUXU"
+        android:text="Mercado Cadastro"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,7 +28,7 @@
         android:layout_marginTop="58dp"
         android:layout_marginEnd="46dp"
         android:text="Cadastrar Produto"
-        android:textSize="34sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
@@ -37,11 +38,12 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginStart="45dp"
-        android:layout_marginTop="83dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="46dp"
         android:text="Cadastrar Fornecedor"
-        android:textSize="34sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnTelaCadastroProduto" />
 
@@ -54,9 +56,11 @@
         android:layout_marginEnd="46dp"
         android:layout_marginBottom="87dp"
         android:text="Cadastrar Promoção"
-        android:textSize="34sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnTelaCadastroFornecedor" />
+        app:layout_constraintTop_toBottomOf="@+id/btnTelaCadastroFornecedor"
+        app:layout_constraintVertical_bias="0.115" />
 </androidx.constraintlayout.widget.ConstraintLayout>

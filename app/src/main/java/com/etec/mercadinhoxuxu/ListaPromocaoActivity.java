@@ -30,7 +30,7 @@ public class ListaPromocaoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_promocao2);
+        setContentView(R.layout.activity_lista_promocao);
 
         listPromocao = findViewById(R.id.listFornecedor);
 

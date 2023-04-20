@@ -148,15 +148,4 @@ public class ListaFornecedorActivity extends AppCompatActivity {
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
 }

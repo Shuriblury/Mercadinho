@@ -10,7 +10,6 @@ import android.widget.EditText;
 
 import com.etec.mercadinhoxuxu.Controller.ProdutoController;
 import com.etec.mercadinhoxuxu.DAO.ProdutoDAO;
-import com.etec.mercadinhoxuxu.Model.Fornecedor;
 import com.etec.mercadinhoxuxu.Model.Produto;
 
 public class CadastroProdutoActivity extends AppCompatActivity {
