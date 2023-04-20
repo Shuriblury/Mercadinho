@@ -44,7 +44,7 @@ public class CadastrarPromocaoActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         if (intent.hasExtra("promocao")) {
-            this.promocaoIntent = (Promocao) intent.getSerializableExtra("promcao");
+            this.promocaoIntent = (Promocao) intent.getSerializableExtra("promocao");
 
             codigo_produto.setText(this.promocaoIntent.getCodigo());
             periodo_dias.setText(this.promocaoIntent.getPeriodo_em_dias());
