@@ -125,7 +125,6 @@ public class ListaProdutoActivity extends AppCompatActivity {
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
                         produtoController.removerProdutoDasListas(produtoParaApagar);
                         produtoController.excluirProduto(produtoParaApagar);
                         listProduto.invalidateViews();
@@ -136,14 +135,9 @@ public class ListaProdutoActivity extends AppCompatActivity {
     }
 
     public void alterar (MenuItem menuItem){
-
-        AdapterView.AdapterContextMenuInfo menuInfo =
-                (AdapterView.AdapterContextMenuInfo)
-                        menuItem.getMenuInfo();
+        AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) menuItem.getMenuInfo();
         final Produto produtoParaAtualizar = produtoController.getListaProdutosFiltro(false).get(menuInfo.position);
-        produtoController
-                .getListaProdutosFiltro(false)
-                .get(menuInfo.position);
+        //produtoController.getListaProdutosFiltro(false).get(menuInfo.position);
         Intent intent =  new Intent(ListaProdutoActivity.this, CadastroProdutoActivity.class);
         intent.putExtra("produto", produtoParaAtualizar);
         startActivity(intent);

@@ -8,7 +8,6 @@ public class Produto implements Serializable {
     descrição
     categoria: bebida, bebida alcoólica, grão, laticínios, fruta, leguminosa... etc*/
     // 1º passo -> criar variaveis
-    private int id;
     private String codigo;
     private String nome;
     private String descricao;
@@ -73,6 +72,7 @@ public class Produto implements Serializable {
     @Override
     public String toString() {
         return "Produto{" +
+                ", codigo='" + codigo + '\'' +
                 "nome='" + nome + '\'' +
                 ", categoria='" + categoria + '\'' +
                 ", descricao='" + descricao + '\'' +
