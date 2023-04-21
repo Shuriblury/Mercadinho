@@ -26,6 +26,21 @@
             android:text="Cadastro de Produto"
             android:textSize="34sp" />
 
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Codigo Produto" />
+
+        <EditText
+            android:id="@+id/edtCodigoProduto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
