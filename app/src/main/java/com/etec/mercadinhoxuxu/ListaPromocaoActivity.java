@@ -32,7 +32,7 @@ public class ListaPromocaoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_promocao);
 
-        listPromocao = findViewById(R.id.listFornecedor);
+        listPromocao = findViewById(R.id.listPromocao);
 
         PromocaoDAO promocaoDAO = new PromocaoDAO(this);
 

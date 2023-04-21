@@ -33,7 +33,7 @@
             android:textSize="34sp" />
 
         <EditText
-            android:id="@+id/edtPeriodoEmdias"
+            android:id="@+id/edtPeriodoEmDias"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -86,9 +86,17 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnCadastrarTelaPromocao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cadastrar" />
+
+        <Button
+            android:id="@+id/btnPromocaoCadastradaTelaPromocao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PROMOCAO CADASTRADA" />
+
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
