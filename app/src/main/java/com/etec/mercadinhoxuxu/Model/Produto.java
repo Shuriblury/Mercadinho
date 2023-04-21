@@ -9,6 +9,7 @@ public class Produto implements Serializable {
     categoria: bebida, bebida alcoólica, grão, laticínios, fruta, leguminosa... etc*/
     // 1º passo -> criar variaveis
     private String codigo;
+    private int id;
     private String nome;
     private String descricao;
     private String categoria;
